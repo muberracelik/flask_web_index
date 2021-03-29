@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src=
+"https://kit.fontawesome.com/2961dbb4cf.js" crossorigin="anonymous">
+    </script>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'index.css')}}">
+</head>
+<body>
+    <div class="buttons">
+        <form method="POST">
+        <div class="container">
+              <input type="text"
+                       name="url"
+                       placeholder="Ana linki giriniz..."
+                        required>
+          </div>
+         <div class="container">
+    <textarea rows="10" cols="50" placeholder="Link Kümesini Giriniz..." name="urlqueue">
+</textarea>
+        </div>
+        <button type="submit">
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+        </form>
+        <div class="tr">
+        {% if html_text %}
+            {% for para in html_text %}
+                <p>{{para}}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    </div>
+
+    <script src="{{ url_for('static', filename = 'searchbar.js')}}"></script>
+</body>
+</html>

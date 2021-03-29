@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src=
+"https://kit.fontawesome.com/2961dbb4cf.js" crossorigin="anonymous">
+    </script>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'index.css')}}">
+</head>
+<body>
+
+        <div class="buttons">
+    <form method="POST">
+          <div class="container">
+              <input type="text"
+                       name="url1"
+                       placeholder="Link 1"
+                        required>
+          </div>
+            <div class="container">
+              <input type="text"
+                       name="url2"
+                       placeholder="Link 2"
+                        required>
+                <button type="submit">
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+          </div>
+
+    </form>
+            <div class="tr">
+        {% if key1 %}
+            <p> 1. Link => {{ key1 }}</p>
+        {% endif %}
+    </div>
+            <div class="tr">
+        {% if oran %}
+            <p>% {{ oran }}</p>
+        {% endif %}
+    </div>
+            <div class="tr">
+        {% if key2 %}
+            <p> 2.Link => {{ key2 }}</p>
+        {% endif %}
+    </div>
+        </div>
+
+
+
+    <script src="{{ url_for('static', filename = 'searchbar.js')}}"></script>
+</body>
+</html>

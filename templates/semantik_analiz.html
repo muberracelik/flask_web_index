@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src=
+"https://kit.fontawesome.com/2961dbb4cf.js" crossorigin="anonymous">
+    </script>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'searchbar.css')}}">
+</head>
+<body>
+
+    <button class="myBtn">SEMANTIK ANALIZ<span>
+        <i class="fas fa-search"></i>
+    </span></button>
+
+    <div class="fullScreen">
+        <div class="inputBox">
+            <input type="text"
+                   placeholder="Link giriniz...">
+            <button type="submit">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+        <div class="closeBtn">
+          <i class="fa fa-close"></i>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename = 'searchbar.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src=
+"https://kit.fontawesome.com/2961dbb4cf.js" crossorigin="anonymous">
+    </script>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'searchbar.css')}}">
+</head>
+<body>
+    <button class="myBtn">FREKANS HESAPLAMA<span>
+        <i class="fas fa-search"></i>
+    </span></button>
+    <form method="POST">
+        <div class="fullScreen">
+            <div class="inputBox">
+                <input type="text"
+                       name="url"
+                       placeholder="Link giriniz..."
+                        required>
+                <button type="submit">
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="closeBtn">
+              <i class="fa fa-close"></i>
+            </div>
+        </div>
+    </form>
+
+    <div class="tr">
+        {% if web %}
+            <p>{{ web }}</p>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename = 'searchbar.js')}}"></script>
+</body>
+</html>
+
+
