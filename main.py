@@ -58,8 +58,11 @@ def indexleme_siralama():
     if request.method == 'POST':
         ana_url = request.form['url']
         kume_url = request.form['urlqueue']
-        html_text = indexle_sirala(ana_url, kume_url)
-        html_text = html_text.split('\n')
+        try:
+            html_text = indexle_sirala(ana_url, kume_url)
+            html_text = html_text.split('\n')
+        except:
+            html_text = "VERİLEN SAYFALARLA İŞLEM YAPILAMIYOR"
     return render_template("indexleme_siralama.html", html_text=html_text)
 
 

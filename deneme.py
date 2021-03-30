@@ -35,12 +35,15 @@ def alt_link(ana_url, kume_url):
     kume_oran = kume_oran / len(urls)
     ana_oran = benzerlik_orani(anahtar1, anahtar3)
     oran = (kume_oran * 40 / 100) + (ana_oran * 60 / 100)
+
     return anahtar3, tmp, oran
 
 
 def indexle_sirala(ana_url, kume_url):
+    """"
 https://turk.net/cevre-politikasi
 https://turk.net/destek
+"""
     html_text = ""
     ana_url = "https://turk.net/hakkimizda/altyapimiz/"
     kume_url = "https://turk.net/destek\nhttps://turk.net/cevre-politikasi\n"

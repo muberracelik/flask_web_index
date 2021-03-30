@@ -5,9 +5,30 @@
 "https://kit.fontawesome.com/2961dbb4cf.js" crossorigin="anonymous">
     </script>
   <link rel="stylesheet" href="{{ url_for('static', filename = 'index.css')}}">
+    <style type="text/css">
+            dummydeclaration { padding-left: 4em; } /* Firefox ignores first declaration for some reason */
+            tab1 { padding-left: 4em; }
+            tab2 { padding-left: 8em; }
+            tab3 { padding-left: 12em; }
+            tab4 { padding-left: 16em; }
+            tab5 { padding-left: 20em; }
+            tab6 { padding-left: 24em; }
+            tab7 { padding-left: 28em; }
+            tab8 { padding-left: 32em; }
+            tab9 { padding-left: 36em; }
+            tab10 { padding-left: 40em; }
+            tab11 { padding-left: 44em; }
+            tab12 { padding-left: 48em; }
+            tab13 { padding-left: 52em; }
+            tab14 { padding-left: 56em; }
+            tab15 { padding-left: 60em; }
+            tab16 { padding-left: 64em; }
+    </style>
 </head>
 <body>
+{% if not html_text %}
     <div class="buttons">
+
         <form method="POST">
         <div class="container">
               <input type="text"
@@ -16,21 +37,28 @@
                         required>
           </div>
          <div class="container">
-    <textarea rows="10" cols="50" placeholder="Link Kümesini Giriniz..." name="urlqueue">
+    <textarea rows="10" cols="50" placeholder="Link Kumesini Giriniz..." name="urlqueue">
 </textarea>
         </div>
         <button type="submit">
                   <i class="fas fa-arrow-right"></i>
                 </button>
         </form>
-        <div class="tr">
-        {% if html_text %}
-            {% for para in html_text %}
-                <p>{{para}}</p>
-            {% endfor %}
-        {% endif %}
     </div>
-    </div>
+
+{% endif %}
+    {% if html_text %}
+        {% for satir in html_text %}
+            {% if satir[0] == "+" %}
+                    <h5><tab2>{{satir}}</tab2></h5>
+            {% elif satir[0] == "-" %}
+
+                <p><tab4>{{satir}}</tab4></p>
+            {% else %}
+                <h4>{{satir}}</h4>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 
     <script src="{{ url_for('static', filename = 'searchbar.js')}}"></script>
 </body>

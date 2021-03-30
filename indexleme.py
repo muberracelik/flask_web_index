@@ -32,7 +32,7 @@ def alt_link(ana_url, kume_url):
         anahtar2 = key_words(link)
         bo = benzerlik_orani(anahtar1, anahtar2)
         kume_oran += bo
-        tmp = "\t\t" + link + " Benzerlik Oranı: " + str(bo) + "\t keywords: " + str(anahtar2) + "\n"
+        tmp = "-\t\t" + link + " Benzerlik Oranı => " + str(bo) + "\t keywords: " + str(anahtar2) + "\n"
         tmp_liste.append(tmp)
         tmp_oran_liste.append(bo)
     n = len(tmp_liste)
@@ -47,6 +47,7 @@ def alt_link(ana_url, kume_url):
     kume_oran = kume_oran / len(urls)
     ana_oran = benzerlik_orani(anahtar1, anahtar3)
     oran = (kume_oran * 40 / 100) + (ana_oran * 60 / 100)
+    oran = round(oran, 2)
     return anahtar3, tmp, oran
 
 
@@ -54,13 +55,16 @@ def indexle_sirala(ana_url, kume_url):
     html_text = ""
     kume_urller = kume_url.split("\n")
     anahtar1 = key_words(ana_url)
-    html_text += "Ana Url = " + ana_url + str(anahtar1) + "\n\n"
+    if anahtar1 == "BU SİTE İÇİN İŞLEM YAPILAMIYOR":
+        raise Exception("BU SİTE İÇİN İŞLEM YAPILAMIYOR")
+    html_text += "Ana Url = " + ana_url + " " + str(anahtar1) + "\n\n"
     if "" in kume_urller:
         kume_urller.remove("")
     for link in kume_urller:
         text = ""
         anahtar3, tmp, oran = alt_link(ana_url, link)
-        text += "\t" + str(link) + " Genel Skor => " + str(oran) + "\t keywords: " + str(anahtar3) + "\n" + tmp
+        text += "+\t" + str(link) + " Genel Skor => " + str(oran) + "\t Anahtar Kelimeler: " + str(
+            anahtar3) + "\n" + tmp
         oran_liste.append(oran)
         html_liste.append(text)
     n = len(html_liste)
