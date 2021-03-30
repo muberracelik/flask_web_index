@@ -3,6 +3,7 @@ from frekans import count_words
 from anahtar import key_words
 from benzerlik import benzerlik_orani
 from indexleme import indexle_sirala
+from semantic_es import indexle_sirala1
 
 app = Flask(__name__)
 app.debug = True
@@ -66,9 +67,20 @@ def indexleme_siralama():
     return render_template("indexleme_siralama.html", html_text=html_text)
 
 
-@app.route("/semantik_analiz")
+@app.route("/semantik_analiz", methods=['GET', 'POST'])
 def semantik_analiz():
-    return render_template("semantik_analiz.html")
+    ana_url = None
+    kume_url = None
+    html_text = None
+    if request.method == 'POST':
+        ana_url = request.form['url']
+        kume_url = request.form['urlqueue']
+        try:
+            html_text = indexle_sirala1(ana_url, kume_url)
+            html_text = html_text.split('\n')
+        except:
+            html_text = "VERİLEN SAYFALARLA İŞLEM YAPILAMIYOR"
+    return render_template("semantik_analiz.html", html_text=html_text)
 
 
 if __name__ == "__main__":
