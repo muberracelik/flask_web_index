@@ -44,7 +44,8 @@ def alt_link(ana_url, kume_url):
     tmp = ""
     for i in range(len(tmp_liste)):
         tmp += tmp_liste[i] + "\n"
-    kume_oran = kume_oran / len(urls)
+    if kume_oran !=0:
+        kume_oran = kume_oran / len(urls)
     ana_oran = benzerlik_orani(anahtar1, anahtar3)
     oran = (kume_oran * 40 / 100) + (ana_oran * 60 / 100)
     oran = round(oran, 2)
